@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adsalt Studios - Turn Your Ideas Into Reality Fast</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2c5530;
+            --secondary: #d4af37;
+            --accent: #4a90a4;
+            --text-dark: #333;
+            --text-light: #666;
+            --bg-light: #fafafa;
+            --white: #ffffff;
+            --shadow: 0 4px 6px rgba(0,0,0,0.1);
+            --radius: 8px;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: var(--shadow);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .logo-mark {
+            width: 32px;
+            height: 32px;
+            background: var(--primary);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .nav-toggle {
+            display: block;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary);
+        }
+
+        .nav-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: white;
+            box-shadow: var(--shadow);
+            flex-direction: column;
+            padding: 1rem 0;
+        }
+
+        .nav-menu.active {
+            display: flex;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-dark);
+            padding: 0.5rem 1rem;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="circuit" patternUnits="userSpaceOnUse" width="20" height="20"><path d="M10 10L20 10M10 10L10 20M10 10L0 10M10 10L10 0" stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="none"/></pattern></defs><rect width="100" height="100" fill="url(%23circuit)"/></svg>') repeat;
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .hero .supporting {
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            opacity: 0.8;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: var(--radius);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            min-width: 160px;
+        }
+
+        .btn-primary {
+            background: var(--secondary);
+            color: var(--text-dark);
+        }
+
+        .btn-primary:hover {
+            background: #e6c547;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary);
+        }
+
+        /* Section Base Styles */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .getting-started .section-title {
+            color: white;
+        }
+
+        /* Who We Serve */
+        .serve {
+            background: var(--bg-light);
+        }
+
+        .serve-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .serve-card {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .serve-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--accent);
+            border-radius: var(--radius);
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .serve-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .serve-examples {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* Mission */
+        .mission {
+            text-align: center;
+        }
+
+        .mission-content {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .mission-diagram {
+            margin-top: 3rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            flex-direction: column;
+        }
+
+        .diagram-step {
+            background: white;
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            min-width: 200px;
+            width: 100%;
+            max-width: 250px;
+        }
+
+        .arrow {
+            font-size: 2rem;
+            color: var(--accent);
+            transform: rotate(90deg);
+        }
+
+        /* Services */
+        .services {
+            background: var(--bg-light);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            align-items: stretch;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-content {
+            flex-grow: 1;
+        }
+
+        .service-card .btn {
+            margin-top: auto;
+            align-self: flex-start;
+        }
+
+        .service-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .service-card h3 {
+            color: var(--primary);
+            font-size: 1.3rem;
+        }
+
+        .service-features {
+            margin: 1rem 0;
+            list-style: none;
+        }
+
+        .service-features li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* GRACE Framework */
+        .grace {
+            text-align: center;
+        }
+
+        .grace-steps {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .grace-step {
+            background: white;
+            border: 3px solid var(--accent);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            position: relative;
+            text-align: center;
+        }
+
+        .grace-step::after {
+            display: none;
+        }
+
+        .grace-letter {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: var(--bg-light);
+        }
+
+        .testimonial-slider {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .testimonial {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+
+        .testimonial-author {
+            margin-top: 1rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--accent);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* Getting Started */
+        .getting-started {
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .process-step {
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            backdrop-filter: blur(10px);
+        }
+
+        .step-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .trust-signals {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--secondary);
+        }
+
+        .newsletter {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .newsletter input {
+            flex: 1;
+            padding: 0.5rem;
+            border: none;
+            border-radius: var(--radius);
+        }
+
+        .newsletter button {
+            padding: 0.5rem 1rem;
+            background: var(--secondary);
+            color: var(--text-dark);
+            border: none;
+            border-radius: var(--radius);
+            cursor: pointer;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #444;
+            padding-top: 1rem;
+            text-align: center;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* Floating CTA */
+        .floating-cta {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--secondary);
+            color: var(--text-dark);
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+
+        .floating-cta:hover {
+            background: #e6c547;
+            transform: translateY(-2px);
+        }
+
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .serve-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-steps {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .nav-toggle {
+                display: none;
+            }
+
+            .nav-menu {
+                display: flex !important;
+                position: static;
+                width: auto;
+                background: none;
+                box-shadow: none;
+                flex-direction: row;
+                padding: 0;
+                gap: 2rem;
+            }
+
+            .mission-diagram {
+                flex-direction: row;
+                gap: 2rem;
+            }
+
+            .arrow {
+                transform: rotate(0deg);
+            }
+
+            .grace-steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .grace-steps {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (min-width: 1400px) {
+            .grace-steps {
+                grid-template-columns: repeat(5, 1fr);
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <div class="logo-mark">A</div>
+                <span>Adsalt Studios</span>
+            </div>
+            <button class="nav-toggle" onclick="toggleNav()">☰</button>
+            <div class="nav-menu" id="navMenu">
+                <a href="#services">Services</a>
+                <a href="#grace">GRACE Framework</a>
+                <a href="#testimonials">Results</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content fade-in">
+                <h1>Turn Your Ideas Into Reality—Fast</h1>
+                <div class="subtitle">We help small businesses modernize and creative professionals launch meaningful ventures using AI, automation, and smart design.</div>
+                <div class="supporting">Whether you're ready to bring your business into the digital age or launch something entirely new, we make technology work for you—not against you.</div>
+                <div class="cta-buttons">
+                    <a href="#contact" class="btn btn-primary">Book a Free Workshop</a>
+                    <a href="#services" class="btn btn-secondary">See How We Help</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who We Serve -->
+    <section class="serve">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Built For Real People With Real Goals</h2>
+            </div>
+            <div class="serve-grid">
+                <div class="serve-card">
+                    <div class="serve-icon">🏪</div>
+                    <h3>Ready to Modernize?</h3>
+                    <p>Your business has heart and history. We help you add smart technology without losing what makes you special.</p>
+                    <div class="serve-examples">
+                        <strong>Examples:</strong><br>
+                        • Local retailers going online<br>
+                        • Service businesses automating workflows<br>
+                        • Family companies embracing AI tools
+                    </div>
+                </div>
+                <div class="serve-card">
+                    <div class="serve-icon">💡</div>
+                    <h3>Ready to Launch?</h3>
+                    <p>You have vision and skills. We help you turn them into a sustainable business using today's best tools.</p>
+                    <div class="serve-examples">
+                        <strong>Examples:</strong><br>
+                        • Freelancers building agencies<br>
+                        • Corporate refugees starting ventures<br>
+                        • Creatives monetizing their expertise
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center;">
+                <a href="#services" class="btn btn-primary">Which Path Fits You?</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="mission">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Technology Should Build Communities, Not Replace Them</h2>
+            </div>
+            <div class="mission-content">
+                <p>We believe in modern village economies where technology serves people and place. Every tool we recommend, every system we build, every workshop we run asks the same question: "Does this help real humans thrive?"</p>
+                <p><strong>That's why we don't just implement solutions—we teach you to own them.</strong></p>
+            </div>
+            <div class="mission-diagram">
+                <div class="diagram-step">
+                    <strong>Traditional Business</strong>
+                </div>
+                <div class="arrow">→</div>
+                <div class="diagram-step">
+                    <strong>Smart Technology</strong>
+                </div>
+                <div class="arrow">→</div>
+                <div class="diagram-step">
+                    <strong>Thriving Community</strong>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">How We Help You Win</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-content">
+                        <div class="service-header">
+                            <div class="service-icon">🧭</div>
+                            <div>
+                                <h3>Find Your Digital Direction</h3>
+                            </div>
+                        </div>
+                        <p>We map out exactly which technologies will move your needle—and which ones won't. No buzzwords, no unnecessary complexity.</p>
+                        <ul class="service-features">
+                            <li>Technology audit and recommendations</li>
+                            <li>Growth strategy tailored to your goals</li>
+                            <li>Clear roadmap with timelines and budgets</li>
+                        </ul>
+                    </div>
+                    <a href="#contact" class="btn btn-primary">Plan Your Path</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-content">
+                        <div class="service-header">
+                            <div class="service-icon">🔧</div>
+                            <div>
+                                <h3>Build While You Learn</h3>
+                            </div>
+                        </div>
+                        <p>Hands-on sessions where we set up your systems together. You leave with working solutions and the knowledge to manage them.</p>
+                        <ul class="service-features">
+                            <li>Live system setup and training</li>
+                            <li>Custom workflow automation</li>
+                            <li>Documentation you can actually use</li>
+                        </ul>
+                    </div>
+                    <a href="#contact" class="btn btn-primary">Book a Workshop</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-content">
+                        <div class="service-header">
+                            <div class="service-icon">⚡</div>
+                            <div>
+                                <h3>Prototype Ideas in Days, Not Months</h3>
+                            </div>
+                        </div>
+                        <p>Our proven GRACE method turns concepts into testable prototypes faster than you thought possible. Perfect for validating new ventures or testing business improvements.</p>
+                        <ul class="service-features">
+                            <li>Step-by-step prototype development</li>
+                            <li>Market validation techniques</li>
+                            <li>Tools to iterate and improve quickly</li>
+                        </ul>
+                    </div>
+                    <a href="#grace" class="btn btn-primary">Learn GRACE</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GRACE Framework -->
+    <section class="grace" id="grace">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">The GRACE Framework: Ideas to Reality in 5 Steps</h2>
+            </div>
+            <div class="grace-steps">
+                <div class="grace-step">
+                    <div class="grace-letter">G</div>
+                    <h4>Gather</h4>
+                    <p>Collect insights, needs, and constraints</p>
+                </div>
+                <div class="grace-step">
+                    <div class="grace-letter">R</div>
+                    <h4>Refine</h4>
+                    <p>Distill ideas into clear, testable concepts</p>
+                </div>
+                <div class="grace-step">
+                    <div class="grace-letter">A</div>
+                    <h4>Architect</h4>
+                    <p>Design the minimal viable solution</p>
+                </div>
+                <div class="grace-step">
+                    <div class="grace-letter">C</div>
+                    <h4>Create</h4>
+                    <p>Build rapidly using AI and no-code tools</p>
+                </div>
+                <div class="grace-step">
+                    <div class="grace-letter">E</div>
+                    <h4>Evaluate</h4>
+                    <p>Test, learn, and iterate fast</p>
+                </div>
+            </div>
+            <a href="#contact" class="btn btn-primary">See GRACE in Action</a>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Real Results From Real Clients</h2>
+            </div>
+            <div class="testimonial-slider">
+                <div class="testimonial">
+                    <p>"Adsalt turned our 20-year printing business into a digital powerhouse. We're reaching customers we never could before, and our workflow is smoother than ever."</p>
+                    <div class="testimonial-author">— Maria Santos, Santos Printing Co.</div>
+                </div>
+            </div>
+            <div class="stats-grid">
+                <div class="stat">
+                    <div class="stat-number">150+</div>
+                    <div class="stat-label">Businesses Modernized</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">89%</div>
+                    <div class="stat-label">Revenue Growth Average</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">6 Weeks</div>
+                    <div class="stat-label">Average Implementation</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Ongoing Support</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Getting Started -->
+    <section class="getting-started" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Ready to Build Something Better?</h2>
+                <p style="font-size: 1.2rem; opacity: 0.9;">Every transformation starts with a conversation.</p>
+            </div>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h4>Book a free workshop</h4>
+                    <p>Learn what's possible</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h4>Get your custom plan</h4>
+                    <p>See exactly how we'll help</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h4>Start building</h4>
+                    <p>Turn ideas into reality</p>
+                </div>
+            </div>
+            <div style="margin: 2rem 0;">
+                <a href="mailto:hello@adsaltstudios.com" class="btn btn-primary" style="font-size: 1.2rem; padding: 1.2rem 2.5rem;">Book Your Free Workshop</a>
+            </div>
+            <div style="margin: 2rem 0;">
+                <p><strong>Call Us: (555) 123-4567</strong></p>
+                <p><strong>Email: hello@adsaltstudios.com</strong></p>
+            </div>
+            <div class="trust-signals">
+                <span>✓ Free consultation, no obligations</span>
+                <span>✓ Local experts, global tools</span>
+                <span>✓ Results guaranteed or money back</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <a href="#services">Services</a>
+                    <a href="#grace">GRACE Framework</a>
+                    <a href="#testimonials">Case Studies</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p><strong>Adsalt Studios</strong><br>
+                    Building Modern Village Economies</p>
+                    <p>Email: hello@adsaltstudios.com<br>
+                    Phone: (555) 123-4567</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Stay Connected</h4>
+                    <p>Get monthly insights on business modernization</p>
+                    <div class="newsletter">
+                        <input type="email" placeholder="Your email">
+                        <button>Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Adsalt Studios. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating CTA -->
+    <a href="#contact" class="floating-cta">Book Workshop</a>
+
+    <script>
+        function toggleNav() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+                // Close mobile nav if open
+                document.getElementById('navMenu').classList.remove('active');
+            });
+        });
+
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all major sections
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Hide floating CTA on hero section
+        window.addEventListener('scroll', () => {
+            const floatingCta = document.querySelector('.floating-cta');
+            const heroHeight = document.querySelector('.hero').offsetHeight;
+            
+            if (window.scrollY < heroHeight - 100) {
+                floatingCta.style.display = 'none';
+            } else {
+                floatingCta.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
