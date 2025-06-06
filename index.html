@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adsalt Studios - Turn Your Ideas Into Reality Fast</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,6 +16,10 @@
         }
 
         :root {
+            --font-primary: 'Trueno', 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            --font-serif: 'Crimson Text', 'Georgia', 'Times New Roman', serif;
+            --font-mono: 'JetBrains Mono', 'SF Mono', 'Monaco', 'Courier New', monospace;
+
             --primary: #2c5530;
             --secondary: #d4af37;
             --accent: #4a90a4;
@@ -24,7 +32,8 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: var(--font-primary);
+            font-weight: 400;
             line-height: 1.6;
             color: var(--text-dark);
         }
@@ -40,11 +49,21 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(10px);
+            background: #ffffff; /* Solid white initial background */
             z-index: 1000;
             padding: 1rem 0;
-            box-shadow: var(--shadow);
+            font-family: var(--font-primary);
+            transition: background 0.3s ease, box-shadow 0.3s ease, border 0.3s ease; /* Smooth transitions for properties that change */
+            will-change: transform; /* Performance hint */
+        }
+
+        /* Glassmorphic style when scrolled */
+        header.scrolled {
+            background: rgba(255, 255, 255, 0.15); /* Semi-transparent background */
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px); /* Safari support */
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); /* Subtle box-shadow */
+            border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border */
         }
 
         nav {
@@ -105,10 +124,45 @@
             color: var(--text-dark);
             padding: 0.5rem 1rem;
             transition: color 0.3s;
+            font-family: var(--font-primary);
+            font-weight: 400;
         }
 
         .nav-menu a:hover {
             color: var(--primary);
+            background: rgba(255, 255, 255, 0.1); /* Semi-transparent hover background */
+        }
+
+        /* Ensure button text color is white within the nav menu */
+        .nav-menu .btn-primary {
+            color: var(--white); /* Set text color to white */
+            background: var(--primary); /* Set background to primary green */
+        }
+
+        .nav-menu .btn-primary:hover {
+             background: #224225; /* Slightly darker green on hover */
+             color: var(--white); /* Ensure white text on green hover */
+        }
+
+        /* Style for the logo container (image + text) */
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem; /* Space between image and text */
+            text-decoration: none; /* Remove underline from the link */
+            color: var(--primary); /* Inherit primary color */
+            font-size: 1.5rem; /* Match previous logo font size */
+        }
+
+        .navbar-logo img {
+            max-height: 40px; /* Adjust this value as needed */
+            width: auto;
+        }
+
+        .navbar-logo span {
+            font-family: var(--font-primary);
+            font-weight: 700; /* Apply main heading weight */
+            color: var(--primary); /* Ensure text color is primary */
         }
 
         /* Hero Section */
@@ -138,24 +192,29 @@
         }
 
         .hero h1 {
+            font-family: var(--font-primary);
             font-size: 2.5rem;
             margin-bottom: 1rem;
             font-weight: 700;
         }
 
         .hero .subtitle {
+            font-family: var(--font-primary);
             font-size: 1.2rem;
             margin-bottom: 1rem;
             opacity: 0.9;
+            font-weight: 600;
         }
 
         .hero .supporting {
+            font-family: var(--font-primary);
             font-size: 1rem;
             margin-bottom: 2rem;
             opacity: 0.8;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
+            font-weight: 400;
         }
 
         .cta-buttons {
@@ -176,17 +235,19 @@
             display: inline-block;
             transition: all 0.3s;
             min-width: 160px;
+            font-family: var(--font-primary);
         }
 
         .btn-primary {
-            background: var(--secondary);
-            color: var(--text-dark);
+            background: var(--secondary); /* Revert to yellow background */
+            color: var(--text-dark); /* Revert to dark text color */
         }
 
         .btn-primary:hover {
-            background: #e6c547;
+            background: #e6c547; /* Revert to yellow hover background */
             transform: translateY(-2px);
             box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+            color: var(--text-dark); /* Ensure dark text color on yellow hover */
         }
 
         .btn-secondary {
@@ -211,9 +272,11 @@
         }
 
         .section-title {
+            font-family: var(--font-primary);
             font-size: 2.2rem;
             color: var(--primary);
             margin-bottom: 1rem;
+            font-weight: 700;
         }
 
         .getting-started .section-title {
@@ -254,9 +317,11 @@
         }
 
         .serve-card h3 {
+            font-family: var(--font-primary);
             color: var(--primary);
             margin-bottom: 1rem;
             font-size: 1.3rem;
+            font-weight: 600;
         }
 
         .serve-examples {
@@ -275,6 +340,12 @@
             margin: 0 auto;
             font-size: 1.1rem;
             line-height: 1.8;
+            font-family: var(--font-primary);
+            font-weight: 400;
+        }
+
+        .mission-content p strong {
+            font-weight: 500;
         }
 
         .mission-diagram {
@@ -359,8 +430,10 @@
         }
 
         .service-card h3 {
+            font-family: var(--font-primary);
             color: var(--primary);
             font-size: 1.3rem;
+            font-weight: 600;
         }
 
         .service-features {
@@ -372,6 +445,8 @@
             margin-bottom: 0.5rem;
             padding-left: 1.5rem;
             position: relative;
+            font-family: var(--font-primary);
+            font-weight: 400;
         }
 
         .service-features li::before {
@@ -412,10 +487,21 @@
         }
 
         .grace-letter {
+            font-family: var(--font-primary);
             font-size: 2rem;
             font-weight: bold;
             color: var(--primary);
             margin-bottom: 0.5rem;
+        }
+
+        .grace-step h4 {
+            font-family: var(--font-primary);
+            font-weight: 600;
+        }
+
+        .grace-step p {
+            font-family: var(--font-primary);
+            font-weight: 400;
         }
 
         /* Testimonials */
@@ -437,12 +523,15 @@
             text-align: center;
             font-style: italic;
             margin-bottom: 2rem;
+            font-family: var(--font-serif);
+            font-weight: 400;
         }
 
         .testimonial-author {
             margin-top: 1rem;
             font-weight: bold;
             color: var(--primary);
+            font-family: var(--font-serif);
         }
 
         .stats-grid {
@@ -457,14 +546,17 @@
         }
 
         .stat-number {
+            font-family: var(--font-primary);
             font-size: 2.5rem;
             font-weight: bold;
             color: var(--accent);
         }
 
         .stat-label {
+            font-family: var(--font-primary);
             font-size: 0.9rem;
             color: var(--text-light);
+            font-weight: 400;
         }
 
         /* Getting Started */
@@ -520,16 +612,20 @@
         }
 
         .footer-section h4 {
+            font-family: var(--font-primary);
             color: var(--secondary);
             margin-bottom: 1rem;
+            font-weight: 600;
         }
 
         .footer-section a {
+            font-family: var(--font-primary);
             color: white;
             text-decoration: none;
             display: block;
             margin-bottom: 0.5rem;
             transition: color 0.3s;
+            font-weight: 400;
         }
 
         .footer-section a:hover {
@@ -540,6 +636,11 @@
             display: flex;
             gap: 0.5rem;
             margin-top: 1rem;
+        }
+
+        .newsletter input, .newsletter button {
+            font-family: var(--font-primary);
+            font-weight: 400;
         }
 
         .newsletter input {
@@ -576,10 +677,11 @@
             padding: 1rem 1.5rem;
             border-radius: 50px;
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 600;
             box-shadow: 0 4px 12px rgba(0,0,0,0.3);
             z-index: 1000;
             transition: all 0.3s;
+            font-family: var(--font-primary);
         }
 
         .floating-cta:hover {
@@ -668,11 +770,19 @@
 
         .fade-in {
             animation: fadeInUp 0.8s ease-out;
+            will-change: transform, opacity; /* Performance hint for animation */
         }
 
         /* Smooth scrolling */
         html {
             scroll-behavior: smooth;
+        }
+
+        /* Add rule for code/technical content */
+        pre,
+        code {
+            font-family: var(--font-mono);
+            font-weight: 400;
         }
     </style>
 </head>
@@ -680,16 +790,16 @@
     <!-- Header -->
     <header>
         <nav class="container">
-            <div class="logo">
-                <div class="logo-mark">A</div>
-                <span>Adsalt Studios</span>
-            </div>
+            <a href="#" class="navbar-logo">
+                <img src="https://i.ibb.co/zVqKNhSb/adsalt-green.png" alt="adsalt-green" border="0">
+                <span>ADSALT STUDIOS</span>
+            </a>
             <button class="nav-toggle" onclick="toggleNav()">☰</button>
             <div class="nav-menu" id="navMenu">
                 <a href="#services">Services</a>
-                <a href="#grace">GRACE Framework</a>
+                <a href="#grace">How We Work</a>
                 <a href="#testimonials">Results</a>
-                <a href="#contact">Contact</a>
+                <a href="https://calendly.com/adam-adsalt" class="btn btn-primary">Book Free Consultation</a>
             </div>
         </nav>
     </header>
@@ -702,7 +812,7 @@
                 <div class="subtitle">We help small businesses modernize and creative professionals launch meaningful ventures using AI, automation, and smart design.</div>
                 <div class="supporting">Whether you're ready to bring your business into the digital age or launch something entirely new, we make technology work for you—not against you.</div>
                 <div class="cta-buttons">
-                    <a href="#contact" class="btn btn-primary">Book a Free Workshop</a>
+                    <a href="https://calendly.com/adam-adsalt" class="btn btn-primary">Book Free Consultation</a>
                     <a href="#services" class="btn btn-secondary">See How We Help</a>
                 </div>
             </div>
@@ -811,7 +921,7 @@
                             <li>Documentation you can actually use</li>
                         </ul>
                     </div>
-                    <a href="#contact" class="btn btn-primary">Book a Workshop</a>
+                    <a href="https://calendly.com/adam-adsalt" class="btn btn-primary">Book Free Consultation</a>
                 </div>
 
                 <div class="service-card">
@@ -829,7 +939,7 @@
                             <li>Tools to iterate and improve quickly</li>
                         </ul>
                     </div>
-                    <a href="#grace" class="btn btn-primary">Learn GRACE</a>
+                    <a href="https://calendly.com/adam-adsalt" class="btn btn-primary">Learn GRACE</a>
                 </div>
             </div>
         </div>
@@ -868,7 +978,7 @@
                     <p>Test, learn, and iterate fast</p>
                 </div>
             </div>
-            <a href="#contact" class="btn btn-primary">See GRACE in Action</a>
+            <a href="https://calendly.com/adam-adsalt" class="btn btn-primary">Book Free Consultation</a>
         </div>
     </section>
 
@@ -915,7 +1025,7 @@
             <div class="process-steps">
                 <div class="process-step">
                     <div class="step-number">1</div>
-                    <h4>Book a free workshop</h4>
+                    <h4>Book a free consultation</h4>
                     <p>Learn what's possible</p>
                 </div>
                 <div class="process-step">
@@ -930,11 +1040,7 @@
                 </div>
             </div>
             <div style="margin: 2rem 0;">
-                <a href="mailto:hello@adsaltstudios.com" class="btn btn-primary" style="font-size: 1.2rem; padding: 1.2rem 2.5rem;">Book Your Free Workshop</a>
-            </div>
-            <div style="margin: 2rem 0;">
-                <p><strong>Call Us: (555) 123-4567</strong></p>
-                <p><strong>Email: hello@adsaltstudios.com</strong></p>
+                <a href="https://calendly.com/adam-adsalt" class="btn btn-primary" style="font-size: 1.2rem; padding: 1.2rem 2.5rem;">Book Your Free Consultation</a>
             </div>
             <div class="trust-signals">
                 <span>✓ Free consultation, no obligations</span>
@@ -953,14 +1059,12 @@
                     <a href="#services">Services</a>
                     <a href="#grace">GRACE Framework</a>
                     <a href="#testimonials">Case Studies</a>
-                    <a href="#contact">Contact</a>
+                    <a href="https://calendly.com/adam-adsalt">Book Free Consultation</a>
                 </div>
                 <div class="footer-section">
                     <h4>Contact Info</h4>
                     <p><strong>Adsalt Studios</strong><br>
                     Building Modern Village Economies</p>
-                    <p>Email: hello@adsaltstudios.com<br>
-                    Phone: (555) 123-4567</p>
                 </div>
                 <div class="footer-section">
                     <h4>Stay Connected</h4>
@@ -976,9 +1080,6 @@
             </div>
         </div>
     </footer>
-
-    <!-- Floating CTA -->
-    <a href="#contact" class="floating-cta">Book Workshop</a>
 
     <script>
         function toggleNav() {
@@ -1033,5 +1134,23 @@
             }
         });
     </script>
+
+    <script>
+        // Add or remove 'scrolled' class from header on scroll
+        const header = document.querySelector('header');
+        const scrollThreshold = 50; // Adjust this value as needed
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > scrollThreshold) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+
+    <!-- Removed Floating CTA -->
+
+    <script src="https://flowgent.ai/embed.js?id=c066e94c-c28e-4c0c-859e-9c93f9ea4b35"></script>
 </body>
 </html>
