@@ -760,7 +760,7 @@
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(20px);
             }
             to {
                 opacity: 1;
@@ -769,8 +769,14 @@
         }
 
         .fade-in {
-            animation: fadeInUp 0.8s ease-out;
-            will-change: transform, opacity; /* Performance hint for animation */
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* Smooth scrolling */
@@ -805,9 +811,9 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero fade-in">
         <div class="container">
-            <div class="hero-content fade-in">
+            <div class="hero-content">
                 <h1>Turn Your Ideas Into Reality—Fast</h1>
                 <div class="subtitle">We help small businesses modernize and creative professionals launch meaningful ventures using AI, automation, and smart design.</div>
                 <div class="supporting">Whether you're ready to bring your business into the digital age or launch something entirely new, we make technology work for you—not against you.</div>
@@ -820,7 +826,7 @@
     </section>
 
     <!-- Who We Serve -->
-    <section class="serve">
+    <section class="serve fade-in">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Built For Real People With Real Goals</h2>
@@ -856,7 +862,7 @@
     </section>
 
     <!-- Mission Section -->
-    <section class="mission">
+    <section class="mission fade-in">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Technology Should Build Communities, Not Replace Them</h2>
@@ -882,7 +888,7 @@
     </section>
 
     <!-- Services Section -->
-    <section class="services" id="services">
+    <section class="services fade-in" id="services">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">How We Help You Win</h2>
@@ -946,7 +952,7 @@
     </section>
 
     <!-- GRACE Framework -->
-    <section class="grace" id="grace">
+    <section class="grace fade-in" id="grace">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">The GRACE Framework: Ideas to Reality in 5 Steps</h2>
@@ -983,7 +989,7 @@
     </section>
 
     <!-- Testimonials -->
-    <section class="testimonials" id="testimonials">
+    <section class="testimonials fade-in" id="testimonials">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Real Results From Real Clients</h2>
@@ -1016,7 +1022,7 @@
     </section>
 
     <!-- Getting Started -->
-    <section class="getting-started" id="contact">
+    <section class="getting-started fade-in" id="contact">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Ready to Build Something Better?</h2>
@@ -1051,7 +1057,7 @@
     </section>
 
     <!-- Footer -->
-    <footer>
+    <footer class="fade-in">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
@@ -1106,31 +1112,38 @@
         // Add scroll animations
         const observerOptions = {
             threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+            rootMargin: '0px 0px -100px 0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+                    entry.target.classList.add('visible');
+                    // Unobserve after animation is triggered
+                    observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
 
         // Observe all major sections
-        document.querySelectorAll('section').forEach(section => {
-            observer.observe(section);
+        document.querySelectorAll('section, footer').forEach(element => {
+            observer.observe(element);
         });
 
-        // Hide floating CTA on hero section
+        // Optimize scroll performance
+        let ticking = false;
         window.addEventListener('scroll', () => {
-            const floatingCta = document.querySelector('.floating-cta');
-            const heroHeight = document.querySelector('.hero').offsetHeight;
-            
-            if (window.scrollY < heroHeight - 100) {
-                floatingCta.style.display = 'none';
-            } else {
-                floatingCta.style.display = 'block';
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const header = document.querySelector('header');
+                    if (window.scrollY > 50) {
+                        header.classList.add('scrolled');
+                    } else {
+                        header.classList.remove('scrolled');
+                    }
+                    ticking = false;
+                });
+                ticking = true;
             }
         });
     </script>
