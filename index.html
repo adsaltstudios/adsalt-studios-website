@@ -36,6 +36,7 @@
             font-weight: 400;
             line-height: 1.6;
             color: var(--text-dark);
+            background-color: #f9f9f9;
         }
 
         .container {
@@ -1057,7 +1058,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="fade-in">
+    <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
@@ -1112,7 +1113,7 @@
         // Add scroll animations
         const observerOptions = {
             threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
+            rootMargin: '100px 0px 0px 0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
