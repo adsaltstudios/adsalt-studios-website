@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="scroll-restoration" content="manual">
     <title>Adsalt Studios - Turn Your Ideas Into Reality Fast</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -32,11 +33,12 @@
         }
 
         body {
+            margin: 0;
+            padding: 0;
             font-family: var(--font-primary);
-            font-weight: 400;
             line-height: 1.6;
-            color: var(--text-dark);
-            background-color: #f9f9f9;
+            color: #333;
+            background: #f9f9f9;
         }
 
         .container {
@@ -50,27 +52,28 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: #ffffff; /* Solid white initial background */
+            background: #ffffff;
             z-index: 1000;
             padding: 1rem 0;
             font-family: var(--font-primary);
-            transition: background 0.3s ease, box-shadow 0.3s ease, border 0.3s ease; /* Smooth transitions for properties that change */
-            will-change: transform; /* Performance hint */
+            transition: background 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
         }
 
         /* Glassmorphic style when scrolled */
         header.scrolled {
-            background: rgba(255, 255, 255, 0.15); /* Semi-transparent background */
+            background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px); /* Safari support */
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); /* Subtle box-shadow */
-            border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border */
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
+        /* Navigation */
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 0 2rem;
         }
 
         .logo {
@@ -131,39 +134,39 @@
 
         .nav-menu a:hover {
             color: var(--primary);
-            background: rgba(255, 255, 255, 0.1); /* Semi-transparent hover background */
+            background: rgba(255, 255, 255, 0.1);
         }
 
         /* Ensure button text color is white within the nav menu */
         .nav-menu .btn-primary {
-            color: var(--white); /* Set text color to white */
-            background: var(--primary); /* Set background to primary green */
+            color: var(--white);
+            background: var(--primary);
         }
 
         .nav-menu .btn-primary:hover {
-             background: #224225; /* Slightly darker green on hover */
-             color: var(--white); /* Ensure white text on green hover */
+             background: #224225;
+             color: var(--white);
         }
 
         /* Style for the logo container (image + text) */
         .navbar-logo {
             display: flex;
             align-items: center;
-            gap: 0.5rem; /* Space between image and text */
-            text-decoration: none; /* Remove underline from the link */
-            color: var(--primary); /* Inherit primary color */
-            font-size: 1.5rem; /* Match previous logo font size */
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--primary);
+            font-size: 1.5rem;
         }
 
         .navbar-logo img {
-            max-height: 40px; /* Adjust this value as needed */
+            max-height: 40px;
             width: auto;
         }
 
         .navbar-logo span {
             font-family: var(--font-primary);
-            font-weight: 700; /* Apply main heading weight */
-            color: var(--primary); /* Ensure text color is primary */
+            font-weight: 700;
+            color: var(--primary);
         }
 
         /* Hero Section */
@@ -779,18 +782,6 @@
             opacity: 1;
             transform: translateY(0);
         }
-
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Add rule for code/technical content */
-        pre,
-        code {
-            font-family: var(--font-mono);
-            font-weight: 400;
-        }
     </style>
 </head>
 <body>
@@ -812,7 +803,7 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero fade-in">
+    <section class="hero">
         <div class="container">
             <div class="hero-content">
                 <h1>Turn Your Ideas Into Reality—Fast</h1>
@@ -827,7 +818,7 @@
     </section>
 
     <!-- Who We Serve -->
-    <section class="serve fade-in">
+    <section class="serve" id="serve">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Built For Real People With Real Goals</h2>
@@ -863,7 +854,7 @@
     </section>
 
     <!-- Mission Section -->
-    <section class="mission fade-in">
+    <section class="mission">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Technology Should Build Communities, Not Replace Them</h2>
@@ -889,7 +880,7 @@
     </section>
 
     <!-- Services Section -->
-    <section class="services fade-in" id="services">
+    <section class="services" id="services">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">How We Help You Win</h2>
@@ -953,7 +944,7 @@
     </section>
 
     <!-- GRACE Framework -->
-    <section class="grace fade-in" id="grace">
+    <section class="grace" id="grace">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">The GRACE Framework: Ideas to Reality in 5 Steps</h2>
@@ -990,7 +981,7 @@
     </section>
 
     <!-- Testimonials -->
-    <section class="testimonials fade-in" id="testimonials">
+    <section class="testimonials" id="testimonials">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Real Results From Real Clients</h2>
@@ -1023,7 +1014,7 @@
     </section>
 
     <!-- Getting Started -->
-    <section class="getting-started fade-in" id="contact">
+    <section class="getting-started" id="contact">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Ready to Build Something Better?</h2>
@@ -1094,77 +1085,67 @@
             navMenu.classList.toggle('active');
         }
 
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-                // Close mobile nav if open
-                document.getElementById('navMenu').classList.remove('active');
-            });
-        });
-
-        // Add scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '100px 0px 0px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    // Unobserve after animation is triggered
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        // Observe all major sections
-        document.querySelectorAll('section, footer').forEach(element => {
-            observer.observe(element);
-        });
-
-        // Optimize scroll performance
-        let ticking = false;
-        window.addEventListener('scroll', () => {
-            if (!ticking) {
-                window.requestAnimationFrame(() => {
-                    const header = document.querySelector('header');
-                    if (window.scrollY > 50) {
-                        header.classList.add('scrolled');
-                    } else {
-                        header.classList.remove('scrolled');
-                    }
-                    ticking = false;
-                });
-                ticking = true;
-            }
-        });
-    </script>
-
-    <script>
-        // Add or remove 'scrolled' class from header on scroll
+        // Navigation
+        const navLinks = document.querySelectorAll('nav a');
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const nav = document.querySelector('nav');
         const header = document.querySelector('header');
-        const scrollThreshold = 50; // Adjust this value as needed
 
+        // Handle header scroll effect
         window.addEventListener('scroll', () => {
-            if (window.scrollY > scrollThreshold) {
+            if (window.scrollY > 50) {
                 header.classList.add('scrolled');
             } else {
                 header.classList.remove('scrolled');
             }
         });
+
+        // Handle fade-in animations for sections
+        const observerOptions = {
+            root: null,
+            rootMargin: '100px 0px 0px 0px', // Trigger 100px before entering viewport
+            threshold: 0.1 // Trigger when 10% of the element is visible
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); // Stop observing once visible
+                }
+            });
+        }, observerOptions);
+
+        // Apply fade-in class and observe all sections except the hero
+        document.querySelectorAll('section:not(.hero)').forEach(section => {
+            section.classList.add('fade-in');
+            observer.observe(section);
+        });
+
+        // Simple click handler for mobile nav to prevent scroll on anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault(); // Prevent default jump
+                // Only close the mobile menu, do not scroll
+                document.getElementById('navMenu').classList.remove('active');
+            });
+        });
+
+        // Mobile menu toggle
+        mobileMenuBtn.addEventListener('click', () => {
+            nav.classList.toggle('active');
+            mobileMenuBtn.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking a link
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('active');
+                mobileMenuBtn.classList.remove('active');
+            });
+        });
     </script>
 
-    <!-- Removed Floating CTA -->
-
-    <script src="https://flowgent.ai/embed.js?id=c066e94c-c28e-4c0c-859e-9c93f9ea4b35"></script>
+    <!-- <script src="https://flowgent.ai/embed.js?id=c066e94c-c28e-4c0c-859e-9c93f9ea4b35"></script> -->
 </body>
 </html>
