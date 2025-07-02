@@ -1,0 +1,24 @@
+{
+  "name": "adsalt-studios-website",
+  "version": "1.0.0",
+  "description": "Adsalt Studios consulting firm homepage",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "serve ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adsaltstudios/adsalt-studios-website.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adsaltstudios/adsalt-studios-website/issues"
+  },
+  "homepage": "https://github.com/adsaltstudios/adsalt-studios-website#readme",
+  "devDependencies": {
+    "serve": "^14.2.4"
+  }
+}
