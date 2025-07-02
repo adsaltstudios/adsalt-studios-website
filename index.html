@@ -6,6 +6,9 @@
     <title>Adsalt Studios - AI Tools for Small Business</title>
     <meta name="description" content="We help small business owners work faster, smarter, and cheaper by building AI tools that cut waste and help them grow.">
     <link rel="icon" type="image/svg+xml" href="https://raw.githubusercontent.com/adsaltstudios/svg-assets/refs/heads/main/path113.svg">
+    <meta property="og:image" content="https://i.ibb.co/Qv5Yjk9X/path113.png" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://i.ibb.co/Qv5Yjk9X/path113.png">
     
     <style>
         /* CSS Reset and Variables */
@@ -363,6 +366,15 @@
             padding-top: 100px;
             position: relative;
             overflow: hidden;
+        }
+        
+        .hero-container-flex {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            position: relative;
         }
         
         .hero-content {
@@ -738,12 +750,28 @@
         
         .credibility-quotes {
             display: grid;
-            gap: var(--space-5);
+            gap: var(--space-7);
+        }
+        
+        .credibility-quote-block {
+            text-align: center;
+            margin-bottom: 0;
         }
         
         .credibility-quote {
+            font-size: 1.18em;
             font-style: italic;
+            color: var(--text-primary);
+            margin-bottom: 0.5em;
+            line-height: 1.5;
+        }
+        
+        .credibility-attribution {
+            font-size: 0.98em;
             color: var(--text-muted);
+            font-style: normal;
+            margin-top: 0.2em;
+            letter-spacing: 0.01em;
         }
         
         /* CTA Section */
@@ -995,10 +1023,11 @@
             }
         }
         .scroll-arrow {
-            position: absolute;
-            bottom: 32px;
-            left: 50%;
-            transform: translateX(-50%);
+            margin-top: 48px;
+            margin-bottom: 32px;
+            position: static;
+            left: auto;
+            transform: none;
             width: 70px;
             height: 70px;
             cursor: pointer;
@@ -1032,9 +1061,9 @@
         }
         @media (max-width: 768px) {
             .scroll-arrow {
-                bottom: 24px;
                 width: 56px;
                 height: 56px;
+                margin-bottom: 24px;
             }
         }
     </style>
@@ -1078,7 +1107,7 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="container">
+        <div class="container hero-container-flex">
             <div class="hero-content">
                 <div class="hero-logo" style="display: flex; justify-content: center; margin-bottom: 32px;">
                     <img src="https://raw.githubusercontent.com/adsaltstudios/svg-assets/refs/heads/main/path113.svg" alt="Adsalt Studios Logo" style="width: 110px; height: 110px; display: block;" />
@@ -1090,7 +1119,7 @@
                     <a href="https://calendly.com/adam-adsalt/30min" class="btn btn-secondary" target="_blank" rel="noopener">Schedule a Chat</a>
                 </div>
             </div>
-            <!-- Custom Scroll Arrow -->
+            <!-- Custom Scroll Arrow (now inside container for perfect centering) -->
             <div class="scroll-arrow" id="scrollArrow" aria-label="Scroll to next section" tabindex="0" role="button">
                 <svg viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M17.5 27.5L35 45L52.5 27.5" />
@@ -1267,9 +1296,18 @@
                 <div class="credibility">
                     <h3>Trusted beyond Main Street.</h3>
                     <div class="credibility-quotes">
-                        <p class="credibility-quote">"Adam is exceptional at cutting through ambiguity—senior customer leaders trust him with their most ambitious goals."<br><span class="text-muted">Enterprise stakeholder, JP Morgan Chase</span></p>
-                        <p class="credibility-quote">"Adam excels at building trust and delivering results for his customers."<br><span class="text-muted">Manager feedback, Amazon</span></p>
-                        <p class="credibility-quote">"He delivers real results that wow the customer."<br><span class="text-muted">Peer feedback, Amazon</span></p>
+                        <div class="credibility-quote-block">
+                            <blockquote class="credibility-quote">“Adam is exceptional at cutting through ambiguity—senior customer leaders trust him with their most ambitious goals.”</blockquote>
+                            <div class="credibility-attribution">Enterprise stakeholder, JP Morgan Chase</div>
+                        </div>
+                        <div class="credibility-quote-block">
+                            <blockquote class="credibility-quote">“Adam excels at building trust and delivering results for his customers.”</blockquote>
+                            <div class="credibility-attribution">Manager feedback, Amazon</div>
+                        </div>
+                        <div class="credibility-quote-block">
+                            <blockquote class="credibility-quote">“He delivers real results that wow the customer.”</blockquote>
+                            <div class="credibility-attribution">Peer feedback, Amazon</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1487,7 +1525,11 @@
                 }
             }
             window.addEventListener('scroll', updateArrowVisibility);
+            // Always show arrow if at or near top (<=10px)
             updateArrowVisibility();
+            if (window.scrollY <= 10) {
+                scrollArrow.classList.remove('hidden');
+            }
             // Click or keyboard scroll to Problem section
             function scrollToProblem() {
                 var problemSection = document.querySelector('.problem');
